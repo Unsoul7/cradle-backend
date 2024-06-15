@@ -9,7 +9,6 @@ router.post('/register', [
     check('username').notEmpty(),
     check('password').notEmpty().isLength(8, 10)
 ], async (req, res) => {
-
     try {
         if (validationResult(req).errors.length != 0) {
             return res.status(404).send(validationResult(req))
@@ -41,19 +40,17 @@ router.post('/login', [
         }
         
         const { username, password } = req.body
-        const loginuser = await User.findOne({username}).populate(['posts','followers','following'])
+        const loginuser = await User.findOne({username})
         const passcheck = await bcrypt.compare(password, loginuser.password)
 
         if(!passcheck){
             return res.status(401).send('Invalid Password')
         }
 
-        res.status(200).json(loginuser)
+        res.status(200).send(true)
 
     } catch (error) {
-
             return res.status(404).send('Invalid Username')
-
     }
 })
 
