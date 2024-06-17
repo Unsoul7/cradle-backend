@@ -4,6 +4,9 @@ const PostSchema = new mongoose.Schema({
     post: {
         type: String
     },
+    title :{
+        type : String
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -12,8 +15,7 @@ const PostSchema = new mongoose.Schema({
         type: Number
     },
     comments : [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref : 'Comment'
+        type: String
     }]
 })
 

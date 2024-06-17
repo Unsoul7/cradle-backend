@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true
+        unique : true
     },
     password: {
         type: String
@@ -24,12 +24,10 @@ const UserSchema = new mongoose.Schema({
         ref: 'Post'
     }],
     followers: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        type: String
     }],
     following: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        type: String
     }],
     profile: {
         type: String,
